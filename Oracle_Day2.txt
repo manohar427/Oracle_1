@@ -1,0 +1,104 @@
+--Create table 
+create table person(
+name varchar2(50) not null,
+age int
+);
+
+--getting table details
+desc person;
+
+--To get list of tables available in a database
+select * from tab
+
+select * from Person;
+
+--Insert data in to Table
+
+insert into person(name,age) values('Abc',10);
+insert into person(name,age) values('Qrt',11)
+insert into person(name,age) values('Xy',10)
+insert into person(name,age) values('Mno',10)
+
+insert into person(age,name) values(20,'BC')
+
+insert into person values('Mno',100)
+
+insert into person(name) values('Course F')
+
+insert into person(age) values(99)
+
+-Primary Key--
+--ONE PER TABLE
+-- NOT ALLOW NULL
+-- UNIQUE VALUES
+
+RollNum int -pk
+StdName varchar2(50)
+Age int 
+
+
+
+CREATE TABLE STUDENT(
+ROLLNUM INT NOT NULL PRIMARY KEY,
+STD_NAME VARCHAR2(50) NOT NULL,
+AGE INT
+)
+
+CREATE TABLE STUDENT(
+ROLLNUM INT NOT NULL,
+STD_NAME VARCHAR2(50) NOT NULL,
+AGE INT,
+CONSTRAINT PK1 PRIMARY KEY(ROLLNUM) 
+)
+
+DROP TABLE STUDENT
+DESC STUDENT
+SELECT * FROM STUDENT
+INSERT INTO STUDENT VALUES(2,'DEF',11);
+INSERT INTO STUDENT VALUES(null,'pqr',12);
+
+--ORA-00001: unique constraint (TEST.SYS_C007126) violated
+--ORA-00001: unique constraint (TEST.PK1) violated
+--ORA-01400: cannot insert NULL into ("TEST"."STUDENT"."ROLLNUM")
+
+--http://www.oracle.com/pls/db92/db92.error_search?prefill=ORA-
+
+--unique key
+--NULL(IN CASE OF COMPOSITE IT WILL NOT ALLOW) OR UNIQ NUMBER/VAUES
+--MORE NUMBER OF UNIQUE PER TABLE
+
+CREATE TABLE ADDRESS1(
+ADDRID INT NOT NULL UNIQUE,
+CITY_NAME VARCHAR2(50) NOT NULL,
+POSTALCODE INT
+)
+
+DROP TABLE ADDRESS1
+
+CREATE TABLE ADDRESS1(
+ADDRID INT NOT NULL,
+CITY_NAME VARCHAR2(50) NOT NULL,
+POSTALCODE INT,
+CONSTRAINT UQ1 UNIQUE(ADDRID)
+)
+
+CREATE TABLE ADDRESS2(
+ADDRID INT NOT NULL,
+CITY_NAME VARCHAR2(50) NOT NULL,
+POSTALCODE INT,
+CONSTRAINT UQ1 UNIQUE(ADDRID,CITY_NAME)
+)
+
+DESC ADDRESS1
+SELECT * FROM ADDRESS1
+
+INSERT INTO ADDRESS1 VALUES(100,'BANGALORE',560011);
+INSERT INTO ADDRESS1 VALUES(101,'BANGALORE',560011);
+
+INSERT INTO ADDRESS2 VALUES(101,'BANGALORE1',560011);
+INSERT INTO ADDRESS2 VALUES(101,'BANGALORE1',560011);
+
+SELECT * FROM ADDRESS2
+
+--ORA-00001: unique constraint (TEST.UQ1) violated
+
