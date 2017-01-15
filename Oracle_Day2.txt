@@ -178,6 +178,37 @@ select * from DEMO_customers where CUST_STATE in ('NY','VA');
 select * from DEMO_ORDERS where ORDER_TOTAL between 1100 and 1900
 
 
+select * from tab;
+--Oracle classes
+--1.order by
+
+select * from DEMO_CUSTOMERS order by CUST_STATE  --Asc
+select * from DEMO_CUSTOMERS order by CUST_STATE asc
+select * from DEMO_CUSTOMERS order by CUST_STATE desc
+
+--count(),
+select * from DEMO_ORDERS 
+select count(*) from DEMO_ORDERS where CUSTOMER_ID=7
+
+--sum()
+select sum(ORDER_TOTAL) from DEMO_ORDERS where CUSTOMER_ID=7
+
+--2.group by
+select CUSTOMER_ID ,sum(ORDER_TOTAL) from DEMO_ORDERS group by CUSTOMER_ID
+select DEPTNO,sum(SAL) from emp group by DEPTNO    
+
+--3.having,4.from
+select CUSTOMER_ID ,sum(ORDER_TOTAL) from DEMO_ORDERS group by CUSTOMER_ID having sum(ORDER_TOTAL)>1000
+select CUSTOMER_ID ,avg(ORDER_TOTAL) from DEMO_ORDERS group by CUSTOMER_ID having sum(ORDER_TOTAL)>1000
+select CUSTOMER_ID ,sum(ORDER_TOTAL) from DEMO_ORDERS where order_id not in(7,8) group by CUSTOMER_ID having sum(ORDER_TOTAL)>1000
+
+select DEPTNO,sum(SAL) from emp group by DEPTNO  having sum(sal)>9000
+--5.distinct
+select * from emp
+select distinct(job) from emp
+select distinct(deptno) from emp
+
+select * from EMP 
 
 
 
